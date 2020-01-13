@@ -19,8 +19,8 @@ int main() {
 	//XORNet net3(1.0f, .0f, 1.5f, 0.5f);
 	unique_ptr<float[]> train_data(make_unique<float[]>(3));
 	train_data[0] = 3.0f;
-	train_data[1] = 7.0f;
-	train_data[2] = 10.0f;
+	train_data[1] = 3.0f;
+	train_data[2] = 5.0f;
     
 	size_t data_size = 3; // size of data
 	size_t input_size = 2;// how many input neurons

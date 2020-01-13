@@ -4,7 +4,7 @@ Neuron::Neuron() {};
 
 Neuron::Neuron(unique_ptr<float[]> &input, size_t& in) : input_length(in), weights(make_unique<float[]>(input_length)) {  //When using sigmoid activation
 
-	in_xi.reset(input.get());
+	x.reset(input.get());
 
 	for (int i = 0; i < input_length; i++) { //initialize weights
 		weights[i] = RAND;
@@ -30,7 +30,7 @@ Neuron::Neuron(unique_ptr<float[]> &input, size_t& in) : input_length(in), weigh
 //};
 
 Neuron::~Neuron() {
-	in_xi.release();
+	x.release();
 	weights.release();
 	wtemp.release();
 }
@@ -38,7 +38,7 @@ Neuron::~Neuron() {
 float Neuron::fnet() {  //Netzeingabefunktion -> Dot Product
 	float fynet = 0.0f;
 	for (int i = 0; i < input_length; i++) {
-		fynet += in_xi[i] * weights[i];
+		fynet += x[i] * weights[i];
 	}
 	return fynet;
 }
@@ -56,7 +56,7 @@ float Neuron::first_act() {
 }
 
 float Neuron::new_input(unique_ptr<float[]> &input, size_t& in) {
-	in_xi.reset(input.get());
+	x.reset(input.get());
 	weights = make_unique<float[]>(in);
 	wtemp = make_unique<float[]>(in);
 	input_length = in;
@@ -70,10 +70,10 @@ float Neuron::new_input(unique_ptr<float[]> &input, size_t& in) {
 
 float Neuron::new_input(float input, size_t in) {
 	input_length = in;
-	in_xi = make_unique<float[]>(in);
+	x = make_unique<float[]>(in);
 	weights = make_unique<float[]>(in);
 	wtemp = make_unique<float[]>(in);
-	in_xi[0] = input;
+	x[0] = input;
 
 	weights[0] = RAND;
 
@@ -82,24 +82,24 @@ float Neuron::new_input(float input, size_t in) {
 
 float Neuron::new_input(float input, size_t in, bool now) {
 	input_length = in;
-	in_xi = make_unique<float[]>(in);
-	in_xi[0] = input;
+	x = make_unique<float[]>(in);
+	x[0] = input;
 
 	return output(true); // output
 }
 
 void Neuron::show() {
-	for (int x = 0; x < input_length; x++) {
-		cout << "x" << x + 1 << ": " << in_xi[x] << "  w" << x + 1 << ": " << weights[x] << endl;
+	for (int i = 0; i < input_length; i++) {
+		cout << "x" << i + 1 << ": " << x[i] << "  w" << i + 1 << ": " << weights[i] << endl;
 	}
-	cout << "output: " << out_y << endl;
+	cout << "output: " << y << endl;
 	cout << endl;
 }
 
 float Neuron::adjust_weights(float y_soll, size_t input_size) {
 
 	for (int i = 0; i < input_size; i++) {
-		wtemp[i] = weights[i] + 0.7f * in_xi[i] * ((y_soll / 10) - out_y);
+		wtemp[i] = weights[i] + 0.7f * x[i] * ((y_soll / 10) - y);
 	}
 
 	for (int i = 0; i < input_size; i++) {
@@ -108,6 +108,6 @@ float Neuron::adjust_weights(float y_soll, size_t input_size) {
 
 	output();
 
-	return (y_soll / 10) - out_y;
+	return (y_soll / 10) - y;
 
 }

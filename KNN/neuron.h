@@ -38,10 +38,10 @@ class Neuron {
 
 #ifdef NUMERIC
 	float output() { //Numeric output
-		return out_y = factivity(fnet());
+		return y = factivity(fnet());
 	}
 	float output(bool) {
-		return out_y = first_act();
+		return y = first_act();
 	}
 #endif // NUMERIC
 
@@ -57,7 +57,7 @@ public:
 	float new_input(float, size_t, bool); //When there is just one input -> devides by ten so its between 1 and 0
 
 	float output_y() {
-		return out_y;
+		return y;
 	};
 
 	void show(); 
