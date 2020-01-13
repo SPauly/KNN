@@ -22,7 +22,7 @@ class Network_Base
 	unique_ptr<Neuron[]> output_layer{ (make_unique<Neuron[]>(output_size)) };
 
 public:
-	Network_Base(size_t, size_t, size_t, unique_ptr<float[]> &);
+	Network_Base(size_t, size_t, size_t, unique_ptr<float[]> &); //data_size, input_size, output_size, data
 	~Network_Base();
 };
 

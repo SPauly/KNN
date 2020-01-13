@@ -125,7 +125,11 @@
     <ClInclude Include="DevideDataspace.h" />
     <ClInclude Include="Network_Base.h" />
     <ClInclude Include="neuron.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="XORNet.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

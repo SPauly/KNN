@@ -52,7 +52,7 @@ float Neuron::factivity(float ynet) { //Aktivierungsfunktion (sigmoid)
 //}
 
 float Neuron::first_act() {
-	return x[0] / 10.0f;
+	return x[0] / 100.0f;
 }
 
 float Neuron::new_input(unique_ptr<float[]> &input, size_t& in) {
@@ -99,7 +99,7 @@ void Neuron::show() {
 float Neuron::adjust_weights(float y_soll, size_t input_size) {
 
 	for (int i = 0; i < input_size; i++) {
-		wtemp[i] = weights[i] + 0.7f * x[i] * ((y_soll / 10) - y);
+		wtemp[i] = weights[i] + 0.7f * x[i] * ((y_soll / 100) - y);
 	}
 
 	for (int i = 0; i < input_size; i++) {
@@ -108,6 +108,6 @@ float Neuron::adjust_weights(float y_soll, size_t input_size) {
 
 	output();
 
-	return (y_soll / 10) - y;
+	return (y_soll / 100) - y;
 
 }

@@ -28,7 +28,7 @@ Network_Base::Network_Base(size_t dz, size_t iz, size_t oz, unique_ptr<float[]> 
 
 	//Lernen
 
-	while (output_layer[0].adjust_weights(data[data_size - 1], input_size) > 2.38419e-07) {	};
+	while (output_layer[0].adjust_weights(data[data_size - 1], input_size) > 5.28419e-06) {	};
 	cout << "Found solution" << output_layer[0].output_y() << endl;
 
 }
