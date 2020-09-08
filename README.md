@@ -1,2 +1,8 @@
 # KNN
-Privates Repository zum Nachprogrammieren der Beispiele in dem Buch Künstliche Intelligenz für Dummies.
+Just having fun here playing around with some tasks from the book 'Künstliche Intelligenz für dummies'...
+
+Feel free to hit me up for feedback, ideas, questions...
+
+Future Plans:
+
+Get back at it and see what it can do :)
